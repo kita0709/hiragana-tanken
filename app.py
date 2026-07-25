@@ -53,7 +53,11 @@ st.markdown(
       touch-action:manipulation;
     }
     div.stButton > button:active {transform:translateY(3px); box-shadow:0 2px 0 rgba(69,60,83,.16);}
-    div[data-testid="stHorizontalBlock"] {gap:.45rem;}
+    div[data-testid="stHorizontalBlock"] {
+      display:flex!important; flex-direction:row!important;
+      flex-wrap:nowrap!important; gap:.35rem;
+    }
+    div[data-testid="stHorizontalBlock"] > div {min-width:0!important; flex:1 1 0!important;}
     .picture {
       display:flex; justify-content:center; align-items:center; min-height:180px;
       font-size:7rem; background:#fff; border:5px solid #ffd166;
@@ -122,8 +126,8 @@ def load_json(filename: str) -> list[dict]:
         return json.load(file)
 
 
-@st.cache_data
 def load_all_data() -> tuple[list[dict], list[dict], list[dict]]:
+    """問題データは小さいため、更新がすぐ反映されるよう毎回読み込みます。"""
     return (
         load_csv("name_questions.csv"),
         load_csv("related_questions.csv"),
