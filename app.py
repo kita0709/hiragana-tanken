@@ -52,6 +52,7 @@ st.markdown(
       font-weight:800; color:var(--ink); background:#fff;
       touch-action:manipulation;
     }
+    div.stButton {width:100%!important;}
     div.stButton > button:active, [data-testid="stButton"] button:active {transform:translateY(3px); box-shadow:0 2px 0 rgba(69,60,83,.16);}
     div[data-testid="stHorizontalBlock"] {
       display:flex!important; flex-direction:row!important;
