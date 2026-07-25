@@ -46,13 +46,13 @@ st.markdown(
     h1 {font-size:clamp(1.8rem,8vw,2.7rem); margin:.1rem 0;}
     h2 {font-size:clamp(1.25rem,5vw,1.7rem); margin:.12rem 0;}
     h3 {font-size:clamp(1.12rem,4.8vw,1.45rem)!important; margin:.1rem 0 .2rem!important;}
-    [data-testid="stButton"] button {
+    div.stButton > button, [data-testid="stButton"] button {
       width:100%!important; min-height:52px; border-radius:16px; border:3px solid #fff;
       box-shadow:0 5px 0 rgba(69,60,83,.16); font-size:1.28rem;
       font-weight:800; color:var(--ink); background:#fff;
       touch-action:manipulation;
     }
-    [data-testid="stButton"] button:active {transform:translateY(3px); box-shadow:0 2px 0 rgba(69,60,83,.16);}
+    div.stButton > button:active, [data-testid="stButton"] button:active {transform:translateY(3px); box-shadow:0 2px 0 rgba(69,60,83,.16);}
     div[data-testid="stHorizontalBlock"] {
       display:flex!important; flex-direction:row!important;
       flex-wrap:nowrap!important; gap:.35rem;
@@ -103,7 +103,7 @@ st.markdown(
     header, footer, #MainMenu {visibility:hidden;}
     @media (max-width:430px) {
       .block-container {padding:.25rem .45rem 1rem;}
-      [data-testid="stButton"] button {min-height:48px; font-size:1.05rem; padding:.15rem;}
+      div.stButton > button, [data-testid="stButton"] button {min-height:48px; font-size:1.05rem; padding:.15rem;}
       .picture {min-height:105px; font-size:4.5rem;}
       .slot {width:2.8rem; height:3rem; font-size:1.6rem;}
       [data-testid="stImage"] img {max-height:105px;}
