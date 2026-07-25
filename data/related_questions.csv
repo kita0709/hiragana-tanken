@@ -1,0 +1,6 @@
+id,image,emoji,question,answer,choices,related_image,related_emoji
+r1,dog.png,🐶,いぬの くびに つけるものは？,くびわ,くびわ|ぼうし|くつ|かさ,collar.png,⭕
+r2,car.png,🚗,くるまに ついているものは？,たいや,たいや|ぼうし|はし|かさ,tire.png,⭕
+r3,bed.png,🛏️,よる ねるときに つかうものは？,べっど,べっど|ばす|くびわ|じてんしゃ,bed.png,🛏️
+r4,toothbrush.png,🪥,はを みがくものは？,はぶらし,はぶらし|くつ|ぼうし|たいわ,toothbrush.png,🪥
+r5,chopsticks.png,🥢,ごはんを たべるときに つかうものは？,はし,はし|かさ|べっど|くびわ,chopsticks.png,🥢

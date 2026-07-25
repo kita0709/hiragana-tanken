@@ -1,0 +1,67 @@
+[
+  {
+    "id": "s1",
+    "question": "どうぶつと のりものに わけよう",
+    "categories": [{"id": "animal", "label": "どうぶつ"}, {"id": "vehicle", "label": "のりもの"}],
+    "items": [
+      {"id": "dog", "label": "いぬ", "image": "dog.png", "emoji": "🐶", "category": "animal"},
+      {"id": "cat", "label": "ねこ", "image": "cat.png", "emoji": "🐱", "category": "animal"},
+      {"id": "rabbit", "label": "うさぎ", "image": "rabbit.png", "emoji": "🐰", "category": "animal"},
+      {"id": "car", "label": "くるま", "image": "car.png", "emoji": "🚗", "category": "vehicle"},
+      {"id": "bus", "label": "ばす", "image": "bus.png", "emoji": "🚌", "category": "vehicle"},
+      {"id": "train", "label": "でんしゃ", "image": "train.png", "emoji": "🚆", "category": "vehicle"}
+    ]
+  },
+  {
+    "id": "s2",
+    "question": "くだものと やさいに わけよう",
+    "categories": [{"id": "fruit", "label": "くだもの"}, {"id": "vegetable", "label": "やさい"}],
+    "items": [
+      {"id": "apple", "label": "りんご", "image": "apple.png", "emoji": "🍎", "category": "fruit"},
+      {"id": "banana", "label": "ばなな", "image": "banana.png", "emoji": "🍌", "category": "fruit"},
+      {"id": "grape", "label": "ぶどう", "image": "grape.png", "emoji": "🍇", "category": "fruit"},
+      {"id": "carrot", "label": "にんじん", "image": "carrot.png", "emoji": "🥕", "category": "vegetable"},
+      {"id": "corn", "label": "とうもろこし", "image": "corn.png", "emoji": "🌽", "category": "vegetable"},
+      {"id": "eggplant", "label": "なす", "image": "eggplant.png", "emoji": "🍆", "category": "vegetable"}
+    ]
+  },
+  {
+    "id": "s3",
+    "question": "そらと うみに わけよう",
+    "categories": [{"id": "sky", "label": "そら"}, {"id": "sea", "label": "うみ"}],
+    "items": [
+      {"id": "plane", "label": "ひこうき", "image": "airplane.png", "emoji": "✈️", "category": "sky"},
+      {"id": "bird", "label": "とり", "image": "bird.png", "emoji": "🐦", "category": "sky"},
+      {"id": "helicopter", "label": "へり", "image": "helicopter.png", "emoji": "🚁", "category": "sky"},
+      {"id": "fish", "label": "さかな", "image": "fish.png", "emoji": "🐟", "category": "sea"},
+      {"id": "whale", "label": "くじら", "image": "whale.png", "emoji": "🐳", "category": "sea"},
+      {"id": "octopus", "label": "たこ", "image": "octopus.png", "emoji": "🐙", "category": "sea"}
+    ]
+  },
+  {
+    "id": "s4",
+    "question": "あかと きいろに わけよう",
+    "categories": [{"id": "red", "label": "あか"}, {"id": "yellow", "label": "きいろ"}],
+    "items": [
+      {"id": "red_apple", "label": "りんご", "image": "apple.png", "emoji": "🍎", "category": "red"},
+      {"id": "strawberry", "label": "いちご", "image": "strawberry.png", "emoji": "🍓", "category": "red"},
+      {"id": "tomato", "label": "とまと", "image": "tomato.png", "emoji": "🍅", "category": "red"},
+      {"id": "yellow_banana", "label": "ばなな", "image": "banana.png", "emoji": "🍌", "category": "yellow"},
+      {"id": "lemon", "label": "れもん", "image": "lemon.png", "emoji": "🍋", "category": "yellow"},
+      {"id": "sun", "label": "たいよう", "image": "sun.png", "emoji": "🌞", "category": "yellow"}
+    ]
+  },
+  {
+    "id": "s5",
+    "question": "たべものと つかうものに わけよう",
+    "categories": [{"id": "food", "label": "たべもの"}, {"id": "tool", "label": "つかうもの"}],
+    "items": [
+      {"id": "bread", "label": "ぱん", "image": "bread.png", "emoji": "🍞", "category": "food"},
+      {"id": "rice", "label": "ごはん", "image": "rice.png", "emoji": "🍚", "category": "food"},
+      {"id": "cake", "label": "けーき", "image": "cake.png", "emoji": "🍰", "category": "food"},
+      {"id": "scissors", "label": "はさみ", "image": "scissors.png", "emoji": "✂️", "category": "tool"},
+      {"id": "pencil", "label": "えんぴつ", "image": "pencil.png", "emoji": "✏️", "category": "tool"},
+      {"id": "umbrella", "label": "かさ", "image": "umbrella.png", "emoji": "☂️", "category": "tool"}
+    ]
+  }
+]
