@@ -44,10 +44,10 @@ st.markdown(
     .block-container {max-width:680px; padding:.35rem .7rem 1.5rem;}
     h1,h2,h3,p {text-align:center; color:var(--ink);}
     h1 {font-size:clamp(1.8rem,8vw,2.7rem); margin:.1rem 0;}
-    h2 {font-size:clamp(1.35rem,6vw,1.9rem); margin:.25rem 0;}
-    h3 {margin:.2rem 0 .35rem!important;}
+    h2 {font-size:clamp(1.25rem,5vw,1.7rem); margin:.12rem 0;}
+    h3 {font-size:clamp(1.12rem,4.8vw,1.45rem)!important; margin:.1rem 0 .2rem!important;}
     div.stButton > button {
-      width:100%; min-height:60px; border-radius:18px; border:3px solid #fff;
+      width:100%; min-height:52px; border-radius:16px; border:3px solid #fff;
       box-shadow:0 5px 0 rgba(69,60,83,.16); font-size:1.28rem;
       font-weight:800; color:var(--ink); background:#fff;
       touch-action:manipulation;
@@ -79,31 +79,30 @@ st.markdown(
     .mini-card img {width:100%; aspect-ratio:1; object-fit:contain; border-radius:14px;}
     .mini-card small {font-size:1rem;}
     .box {
-      min-height:70px; background:#fff; border:4px dashed #83dcc6;
+      min-height:52px; background:#fff; border:3px dashed #83dcc6;
       border-radius:18px; padding:.3rem; text-align:center; font-size:1.5rem;
       overflow-wrap:anywhere;
     }
     .box img {width:29%; aspect-ratio:1; object-fit:contain; border-radius:8px; margin:.08rem;}
-    [data-testid="stImage"] img {max-height:150px; object-fit:contain;}
+    [data-testid="stImage"] img {max-height:115px; object-fit:contain;}
     div[class*="st-key-pick_"] button {
-      min-height:104px; background-size:contain; background-position:center;
+      min-height:78px; background-size:contain; background-position:center;
       background-repeat:no-repeat; background-color:#fff;
     }
-    div[class*="st-key-pick_"] button p {display:none;}
-    div[class*="st-key-pick_"].picked button {border-color:#ff6f91;}
-    div[class*="st-key-char_"] button {font-size:1.55rem; min-height:60px;}
-    div[class*="st-key-related_"] button {font-size:1.35rem; min-height:70px;}
+    div[class*="st-key-char_"] button {font-size:1.5rem; min-height:52px;}
+    div[class*="st-key-related_"] button {font-size:1.3rem; min-height:62px;}
+    [data-testid="stProgressBar"] {margin-bottom:.1rem;}
     .progress-label {text-align:center; font-weight:800; margin:.2rem;}
     .celebrate {text-align:center; font-size:2.3rem; animation:bounce .7s ease-in-out infinite alternate;}
     @keyframes bounce {to {transform:translateY(-7px) rotate(2deg);}}
     header, footer, #MainMenu {visibility:hidden;}
     @media (max-width:430px) {
       .block-container {padding:.25rem .45rem 1rem;}
-      div.stButton > button {min-height:54px; font-size:1.1rem; padding:.25rem;}
-      .picture {min-height:125px; font-size:5rem;}
+      div.stButton > button {min-height:48px; font-size:1.05rem; padding:.15rem;}
+      .picture {min-height:105px; font-size:4.5rem;}
       .slot {width:2.8rem; height:3rem; font-size:1.6rem;}
-      [data-testid="stImage"] img {max-height:125px;}
-      div[class*="st-key-pick_"] button {min-height:88px;}
+      [data-testid="stImage"] img {max-height:105px;}
+      div[class*="st-key-pick_"] button {min-height:74px;}
     }
     </style>
     """,
@@ -215,6 +214,7 @@ def image_choice_button(item: dict, selected: bool) -> bool:
               background-image:url("{uri}");
               border:5px solid {border};
             }}
+            div.st-key-pick_{item["id"]} button p {{display:none;}}
             </style>""",
             unsafe_allow_html=True,
         )
@@ -283,7 +283,6 @@ def name_mode() -> None:
     questions = NAME_QUESTIONS
     q = questions[st.session_state.question_index]
     progress(len(questions))
-    st.header("なまえを つくろう")
     st.markdown("### これは なあに？")
     display_picture(q["image"], q["emoji"])
 
@@ -298,7 +297,6 @@ def name_mode() -> None:
 
     # 入れた文字を押すと、その位置の文字を取り消せます。
     if selected and not st.session_state.answered:
-        st.caption("いれた もじを おすと けせるよ")
         cols = st.columns(len(selected))
         for i, char in enumerate(selected):
             if cols[i].button(f"{char} ↩", key=f"remove_{i}", use_container_width=True):
@@ -347,7 +345,6 @@ def related_mode() -> None:
     questions = RELATED_QUESTIONS
     q = questions[st.session_state.question_index]
     progress(len(questions))
-    st.header("なかまの ことば")
     display_picture(q["image"], q["emoji"])
     st.markdown(f"### {q['question']}")
 
@@ -390,7 +387,6 @@ def sorting_mode() -> None:
     questions = SORTING_QUESTIONS
     q = questions[st.session_state.question_index]
     progress(len(questions))
-    st.header("わけてみよう")
     st.markdown(f"### {q['question']}")
     placed = st.session_state.sorting_placed
     wrong = st.session_state.sorting_wrong
@@ -401,10 +397,9 @@ def sorting_mode() -> None:
         if item["id"] not in placed and (not wrong or item["id"] in wrong)
     ]
     if available:
-        st.caption("えを おしてね")
-        cols = st.columns(3)
+        cols = st.columns(2)
         for i, item in enumerate(available):
-            with cols[i % 3]:
+            with cols[i % 2]:
                 if image_choice_button(item, st.session_state.sorting_selected == item["id"]):
                     st.session_state.sorting_selected = item["id"]
                     st.rerun()
