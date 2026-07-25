@@ -47,7 +47,7 @@ st.markdown(
     h2 {font-size:clamp(1.25rem,5vw,1.7rem); margin:.12rem 0;}
     h3 {font-size:clamp(1.12rem,4.8vw,1.45rem)!important; margin:.1rem 0 .2rem!important;}
     [data-testid="stButton"] button {
-      width:100%; min-height:52px; border-radius:16px; border:3px solid #fff;
+      width:100%!important; min-height:52px; border-radius:16px; border:3px solid #fff;
       box-shadow:0 5px 0 rgba(69,60,83,.16); font-size:1.28rem;
       font-weight:800; color:var(--ink); background:#fff;
       touch-action:manipulation;
