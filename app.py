@@ -106,6 +106,15 @@ st.markdown(
     div[class*="st-key-put_"],
     div[class*="st-key-put_"] .stButton,
     div[class*="st-key-put_"] button {width:100%!important;}
+    div[class*="st-key-char_"] button p {
+      font-size:1.75rem!important; line-height:1!important; font-weight:900!important;
+    }
+    div[class*="st-key-related_"] button p {
+      font-size:1.45rem!important; line-height:1.15!important; font-weight:850!important;
+    }
+    div[class*="st-key-put_"] button p {
+      font-size:1.3rem!important; line-height:1.1!important; font-weight:850!important;
+    }
     [data-testid="stProgressBar"] {margin-bottom:.1rem;}
     .progress-label {text-align:center; font-weight:800; margin:.2rem;}
     .celebrate {text-align:center; font-size:2.3rem; animation:bounce .7s ease-in-out infinite alternate;}
