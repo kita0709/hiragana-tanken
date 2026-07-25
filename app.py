@@ -97,6 +97,15 @@ st.markdown(
     div.st-key-char_choices [data-testid="stButton"] button {font-size:1.75rem!important; min-height:64px!important;}
     div.st-key-related_choices [data-testid="stButton"] button {font-size:1.45rem!important; min-height:76px!important;}
     div.st-key-sorting_categories [data-testid="stButton"] button {font-size:1.3rem!important; min-height:64px!important;}
+    div[class*="st-key-char_"],
+    div[class*="st-key-char_"] .stButton,
+    div[class*="st-key-char_"] button,
+    div[class*="st-key-related_"],
+    div[class*="st-key-related_"] .stButton,
+    div[class*="st-key-related_"] button,
+    div[class*="st-key-put_"],
+    div[class*="st-key-put_"] .stButton,
+    div[class*="st-key-put_"] button {width:100%!important;}
     [data-testid="stProgressBar"] {margin-bottom:.1rem;}
     .progress-label {text-align:center; font-weight:800; margin:.2rem;}
     .celebrate {text-align:center; font-size:2.3rem; animation:bounce .7s ease-in-out infinite alternate;}
