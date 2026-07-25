@@ -93,9 +93,9 @@ st.markdown(
       min-height:108px; background-size:contain; background-position:center;
       background-repeat:no-repeat; background-color:#fff;
     }
-    div[class*="st-key-char_"] button {font-size:1.75rem; min-height:64px;}
-    div[class*="st-key-related_"] button {font-size:1.45rem; min-height:76px;}
-    div[class*="st-key-put_"] button {font-size:1.3rem; min-height:64px;}
+    div.st-key-char_choices button {font-size:1.75rem!important; min-height:64px!important;}
+    div.st-key-related_choices button {font-size:1.45rem!important; min-height:76px!important;}
+    div.st-key-sorting_categories button {font-size:1.3rem!important; min-height:64px!important;}
     [data-testid="stProgressBar"] {margin-bottom:.1rem;}
     .progress-label {text-align:center; font-weight:800; margin:.2rem;}
     .celebrate {text-align:center; font-size:2.3rem; animation:bounce .7s ease-in-out infinite alternate;}
@@ -309,13 +309,14 @@ def name_mode() -> None:
                 st.rerun()
 
     choices = q["choices"].split("|")
-    for row_start in range(0, len(choices), 4):
-        cols = st.columns(4)
-        for col, char in zip(cols, choices[row_start : row_start + 4]):
-            if col.button(char, key=f"char_{row_start}_{char}", disabled=st.session_state.answered):
-                if len(selected) < len(answer):
-                    selected.append(char)
-                st.rerun()
+    with st.container(key="char_choices"):
+        for row_start in range(0, len(choices), 4):
+            cols = st.columns(4)
+            for col, char in zip(cols, choices[row_start : row_start + 4]):
+                if col.button(char, key=f"char_{row_start}_{char}", disabled=st.session_state.answered):
+                    if len(selected) < len(answer):
+                        selected.append(char)
+                    st.rerun()
 
     col1, col2 = st.columns(2)
     if col1.button("ぜんぶ けす", disabled=not selected or st.session_state.answered):
@@ -359,20 +360,21 @@ def related_mode() -> None:
         random.shuffle(choices)
         st.session_state.choice_order = choices
 
-    for row_start in range(0, len(st.session_state.choice_order), 2):
-        cols = st.columns(2)
-        for col, choice in zip(cols, st.session_state.choice_order[row_start : row_start + 2]):
-            label = f"⭐ {choice} ⭐" if st.session_state.answered and choice == q["answer"] else choice
-            if col.button(label, key=f"related_{choice}", disabled=st.session_state.answered):
-                if choice == q["answer"]:
-                    st.session_state.feedback = "correct"
-                    st.session_state.answered = True
-                    st.session_state.correct_count += 1
-                else:
-                    st.session_state.feedback = "retry"
-                    if q["id"] not in st.session_state.wrong_questions:
-                        st.session_state.wrong_questions.append(q["id"])
-                st.rerun()
+    with st.container(key="related_choices"):
+        for row_start in range(0, len(st.session_state.choice_order), 2):
+            cols = st.columns(2)
+            for col, choice in zip(cols, st.session_state.choice_order[row_start : row_start + 2]):
+                label = f"⭐ {choice} ⭐" if st.session_state.answered and choice == q["answer"] else choice
+                if col.button(label, key=f"related_{choice}", disabled=st.session_state.answered):
+                    if choice == q["answer"]:
+                        st.session_state.feedback = "correct"
+                        st.session_state.answered = True
+                        st.session_state.correct_count += 1
+                    else:
+                        st.session_state.feedback = "retry"
+                        if q["id"] not in st.session_state.wrong_questions:
+                            st.session_state.wrong_questions.append(q["id"])
+                    st.rerun()
 
     if st.session_state.feedback == "correct":
         st.markdown(
@@ -412,14 +414,15 @@ def sorting_mode() -> None:
     selected_id = st.session_state.sorting_selected
     if selected_id:
         item = next(item for item in q["items"] if item["id"] == selected_id)
-        cols = st.columns(2)
-        for col, category in zip(cols, q["categories"]):
-            if col.button(category["label"], key=f"put_{category['id']}", type="primary"):
-                placed[selected_id] = category["id"]
-                st.session_state.sorting_selected = None
-                if selected_id in wrong:
-                    wrong.remove(selected_id)
-                st.rerun()
+        with st.container(key="sorting_categories"):
+            cols = st.columns(2)
+            for col, category in zip(cols, q["categories"]):
+                if col.button(category["label"], key=f"put_{category['id']}", type="primary"):
+                    placed[selected_id] = category["id"]
+                    st.session_state.sorting_selected = None
+                    if selected_id in wrong:
+                        wrong.remove(selected_id)
+                    st.rerun()
 
     box_cols = st.columns(2)
     for col, category in zip(box_cols, q["categories"]):
