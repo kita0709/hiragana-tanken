@@ -90,11 +90,12 @@ st.markdown(
     .box img {width:29%; aspect-ratio:1; object-fit:contain; border-radius:8px; margin:.08rem;}
     [data-testid="stImage"] img {max-height:115px; object-fit:contain;}
     div[class*="st-key-pick_"] button {
-      min-height:78px; background-size:contain; background-position:center;
+      min-height:108px; background-size:contain; background-position:center;
       background-repeat:no-repeat; background-color:#fff;
     }
-    div[class*="st-key-char_"] button {font-size:1.5rem; min-height:52px;}
-    div[class*="st-key-related_"] button {font-size:1.3rem; min-height:62px;}
+    div[class*="st-key-char_"] button {font-size:1.75rem; min-height:64px;}
+    div[class*="st-key-related_"] button {font-size:1.45rem; min-height:76px;}
+    div[class*="st-key-put_"] button {font-size:1.3rem; min-height:64px;}
     [data-testid="stProgressBar"] {margin-bottom:.1rem;}
     .progress-label {text-align:center; font-weight:800; margin:.2rem;}
     .celebrate {text-align:center; font-size:2.3rem; animation:bounce .7s ease-in-out infinite alternate;}
@@ -106,7 +107,7 @@ st.markdown(
       .picture {min-height:105px; font-size:4.5rem;}
       .slot {width:2.8rem; height:3rem; font-size:1.6rem;}
       [data-testid="stImage"] img {max-height:105px;}
-      div[class*="st-key-pick_"] button {min-height:74px;}
+      div[class*="st-key-pick_"] button {min-height:104px;}
     }
     </style>
     """,
@@ -308,9 +309,9 @@ def name_mode() -> None:
                 st.rerun()
 
     choices = q["choices"].split("|")
-    for row_start in range(0, len(choices), 5):
-        cols = st.columns(5)
-        for col, char in zip(cols, choices[row_start : row_start + 5]):
+    for row_start in range(0, len(choices), 4):
+        cols = st.columns(4)
+        for col, char in zip(cols, choices[row_start : row_start + 4]):
             if col.button(char, key=f"char_{row_start}_{char}", disabled=st.session_state.answered):
                 if len(selected) < len(answer):
                     selected.append(char)
